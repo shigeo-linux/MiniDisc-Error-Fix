@@ -36,10 +36,9 @@ by default). The test machine already has one installed at
 plus the user in the plugdev group. If you're setting this up on a different
 Ubuntu machine, the relevant line for specific deck (MZ-N505) is:
 
-ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0084", MODE="0664", GROUP="plugdev"
+`ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0084", MODE="0664", GROUP="plugdev"`
 
-(worth noting: that file's own comment identifies 0084 as a Sony MZ-N505 — so
-that's actually your exact model)
+worth noting: 0084 identifies the Sony MZ-N505
 
 
 ## Symptom
