@@ -25,7 +25,7 @@ Runtime packages:
 (confirmed via ldd on the built binary — it also links libudev, libgpg-error,
 libcap, but those are already present on any stock Ubuntu install)
 
-Build-time packages (only if compiling from source, like this install was):
+Build-time packages (only if compiling from source):
 `sudo apt install build-essential libusb-1.0-0-dev libgcrypt20-dev qtbase5-dev
 pkg-config`
 
