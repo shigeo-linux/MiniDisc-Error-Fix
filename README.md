@@ -13,7 +13,7 @@ Sony NetMD Walkman deck; PC with Ubuntu 24.04 installed; MiniDisc that fails to 
 USB cable USB-A to Mini-USB (Mini-B, 5-pin) standard connector, not a
 proprietary Sony one.  
 
-netmdcli installed from https://github.com/linux-minidisc/linux-minidisc.
+`netmdcli` installed from https://github.com/linux-minidisc/linux-minidisc.
 
 For netmdcli on Ubuntu, there's no traditional kernel driver needed — NetMD
 devices don't have a generic USB class (not mass storage, not audio class), so
@@ -21,13 +21,13 @@ nothing binds to them at the kernel level, and netmdcli talks to the device
 directly via libusb from userspace. 
 
 Runtime packages:
-sudo apt install libusb-1.0-0 libgcrypt20
+`sudo apt install libusb-1.0-0 libgcrypt20`
 (confirmed via ldd on the built binary — it also links libudev, libgpg-error,
 libcap, but those are already present on any stock Ubuntu install)
 
 Build-time packages (only if compiling from source, like this install was):
-sudo apt install build-essential libusb-1.0-0-dev libgcrypt20-dev qtbase5-dev
-pkg-config
+`sudo apt install build-essential libusb-1.0-0-dev libgcrypt20-dev qtbase5-dev
+pkg-config`
 
 udev permission rule (this is the part that actually matters — without it you
 need sudo for every netmdcli command, since raw USB device nodes are root-only
