@@ -5,7 +5,7 @@ instead of "Blank" when inserted, using raw NetMD protocol commands sent via
 [`netmdcli`](https://github.com/linux-minidisc/linux-minidisc) — no factory
 service mode required.
 
-Tested on a Sony NetMD Walkman (USB ID `054c:0084`) under Linux.
+Tested on a Sony NetMD Walkman MZ-N505 (USB ID `054c:0084`) under Ubuntu Linux 24.04.
 
 ## Symptom
 
