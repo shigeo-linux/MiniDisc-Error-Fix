@@ -10,15 +10,15 @@ Tested on a Sony NetMD Walkman MZ-N505 (USB ID `054c:0084`) under Ubuntu Linux 2
 ## Prerequisites
 
 Sony NetMD Walkman deck; PC with Ubuntu 24.04 installed; MiniDisc that fails to read,
-USB cable USB-A to Mini-USB (Mini-B, 5-pin) — a standard connector, not a
-proprietary Sony one.  netmdcli installed from https://github.com/linux-minidisc/linux-minidisc.
+USB cable USB-A to Mini-USB (Mini-B, 5-pin) standard connector, not a
+proprietary Sony one.  
+
+netmdcli installed from https://github.com/linux-minidisc/linux-minidisc.
 
 For netmdcli on Ubuntu, there's no traditional kernel driver needed — NetMD
 devices don't have a generic USB class (not mass storage, not audio class), so
 nothing binds to them at the kernel level, and netmdcli talks to the device
 directly via libusb from userspace. 
-
-What you actually need:
 
 Runtime packages:
 sudo apt install libusb-1.0-0 libgcrypt20
