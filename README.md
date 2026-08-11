@@ -7,6 +7,41 @@ service mode required.
 
 Tested on a Sony NetMD Walkman MZ-N505 (USB ID `054c:0084`) under Ubuntu Linux 24.04.
 
+## Prerequisites
+
+Sony NetMD Walkman deck; PC with Ubuntu 24.04 installed; MiniDisc that fails to read,
+USB cable USB-A to Mini-USB (Mini-B, 5-pin) — a standard connector, not a
+proprietary Sony one.  netmdcli installed from https://github.com/linux-minidisc/linux-minidisc.
+
+For netmdcli on Ubuntu, there's no traditional kernel driver needed — NetMD
+devices don't have a generic USB class (not mass storage, not audio class), so
+nothing binds to them at the kernel level, and netmdcli talks to the device
+directly via libusb from userspace. 
+
+What you actually need:
+
+Runtime packages:
+sudo apt install libusb-1.0-0 libgcrypt20
+(confirmed via ldd on the built binary — it also links libudev, libgpg-error,
+libcap, but those are already present on any stock Ubuntu install)
+
+Build-time packages (only if compiling from source, like this install was):
+sudo apt install build-essential libusb-1.0-0-dev libgcrypt20-dev qtbase5-dev
+pkg-config
+
+udev permission rule (this is the part that actually matters — without it you
+need sudo for every netmdcli command, since raw USB device nodes are root-only
+by default). The test machine already has one installed at
+/etc/udev/rules.d/50-netmd.rules covering every known NetMD/Hi-MD device ID,
+plus the user in the plugdev group. If you're setting this up on a different
+Ubuntu machine, the relevant line for specific deck (MZ-N505) is:
+
+ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0084", MODE="0664", GROUP="plugdev"
+
+(worth noting: that file's own comment identifies 0084 as a Sony MZ-N505 — so
+that's actually your exact model)
+
+
 ## Symptom
 
 A disc shows `Error` (sometimes `00:00 Error`) on the deck's own screen when
